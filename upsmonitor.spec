@@ -1,14 +1,14 @@
 Summary:	Allows to monitor UPS Active Power
 Summary(pl):	Narzêdzia do monitorowania UPS-ów Active Power
 Name:		upsmonitor
-Version:	1.0.9
+Version:	1.0.11
 Release:	1
 License:	Free
 Vendor:		Artur Miarecki (MAYANET) artur.miarecki@mayanet.pl
 Group:		Daemons
 Requires:	/bin/mail
-Source0:	http://download.mayanet.pl/ups_monitor/arch/1.0.9/upsmonitor.pl
-Source1:	http://download.mayanet.pl/ups_monitor/arch/1.0.9/upsmonitor.conf
+Source0:	http://download.mayanet.pl/ups_monitor/arch/%{version}/%{name}.pl
+Source1:	http://download.mayanet.pl/ups_monitor/arch/%{version}/%{name}.conf
 Source2:	http://download.mayanet.pl/ups_monitor/historia.txt
 Source10:	%{name}-readme.txt
 # http://download.mayanet.pl/ups_monitor/readme.txt
@@ -48,9 +48,9 @@ else
 	echo "Run \"/etc/rc.d/init.d/upsmoinitor start\" to start ups_monitor."
 fi
 
-%files 
+%files
 %defattr(644,root,root,755)
 %doc readme.txt historia.txt
 %attr(750,root,root) %{_sbindir}/upsmonitor.pl
 %attr(754,root,root) /etc/rc.d/init.d/upsmonitor
-%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/upsmonitor.conf
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/upsmonitor.conf
