@@ -4,12 +4,12 @@ Name:		upsmonitor
 Version:	1
 Release:	0.1
 License:	Free
+Vendor:		Artur Miarecki (MAYANET)  artur.miarecki@mayanet.pl
 Group:		Daemons
 Source0:	http://download.mayanet.pl/ups_monitor/upsmonitor.pl
-Source1:	%{name}-readme.txt
 # http://download.mayanet.pl/ups_monitor/readme.txt
+Source1:	%{name}-readme.txt
 Source2:	%{name}.init
-Vendor:	  Artur Miarecki (MAYANET)  artur.miarecki@mayanet.pl
 URL:		http://download.mayanet.pl/ups_monitor/
 ExclusiveArch:	%{ix86}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -22,9 +22,7 @@ Narzêdzia pozwalaj±ce na monitorowanie i bezpieczne zamkniêcie systemu
 operacyjnego komputera z do³±czonym zasilaczem UPS Active Power.
 
 %prep
-
-rm -rf %{name}
-mkdir %{name}
+%setup -q -c -T
 install %{SOURCE1} readme.txt
 
 %install
@@ -32,7 +30,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sbindir},%{_sysconfdir}/scripts,/etc/rc.d/init.d,/var/log}
 
 install %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/upsmonitor
-install %{SOURCE0} $RPM_BUILD_ROOT/%{_sbindir}
+install %{SOURCE0} $RPM_BUILD_ROOT%{_sbindir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
