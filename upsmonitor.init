@@ -1,0 +1,54 @@
+#!/bin/sh
+# 
+# chkconfig:	12345 98 92
+# description:	Uninterruptable Power Supply Monitoring Script upsmonitor.pl
+#
+#
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+# Source networking configuration.
+. /etc/sysconfig/network
+
+# Demon specified configuration.
+[ -f /etc/sysconfig/upsmonitor ] && . /etc/sysconfig/upsmonitor
+
+RETVAL=0
+# See how we were called.
+case "$1" in
+  start)
+	# Check if the service is already running?
+	if [ ! -f /var/lock/subsys/upsmonitor ]; then
+		msg_starting upsmonitor
+		daemon upsmonitor.pl
+		RETVAL=$?
+		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/upsmonitor
+	else
+		msg_already_running upsmonitor
+	fi
+	;;
+  stop)
+	if [ -f /var/lock/subsys/upsmonitor ]; then
+		msg_stopping upsmonitor
+		killproc upsmonitor
+		rm -f /var/lock/subsys/upsmonitor >/dev/null 2>&1
+	else
+		msg_not_running upsmonitor
+	fi	
+	;;
+  status)
+	status upsmonitor
+	exit $?
+	;;
+  restart|force-reload)
+	$0 stop
+	$0 start
+	exit $?
+	;;
+  *)
+	msg_usage "$0 {start|stop|restart|status}"
+	exit 3
+esac
+
+exit $RETVAL
