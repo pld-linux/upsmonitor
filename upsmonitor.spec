@@ -4,7 +4,7 @@ Name:		upsmonitor
 Version:	1.0.9
 Release:	1
 License:	Free
-Vendor:		Artur Miarecki (MAYANET)  artur.miarecki@mayanet.pl
+Vendor:		Artur Miarecki (MAYANET) artur.miarecki@mayanet.pl
 Group:		Daemons
 Requires:	/bin/mail
 Source0:	http://download.mayanet.pl/ups_monitor/arch/1.0.9/upsmonitor.pl
@@ -43,9 +43,9 @@ rm -rf $RPM_BUILD_ROOT
 %post
 /sbin/chkconfig --add upsmonitor
 if [ -f /var/lock/subsys/upsmonitor ]; then
-        /etc/rc.d/init.d/upsmonitor restart 1>&2
+	/etc/rc.d/init.d/upsmonitor restart 1>&2
 else
-        echo "Run \"/etc/rc.d/init.d/upsmoinitor start\" to start ups_monitor."
+	echo "Run \"/etc/rc.d/init.d/upsmoinitor start\" to start ups_monitor."
 fi
 
 %files 
