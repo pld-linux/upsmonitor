@@ -6,6 +6,7 @@ Release:	0.1
 License:	Free
 Vendor:		Artur Miarecki (MAYANET)  artur.miarecki@mayanet.pl
 Group:		Daemons
+Requires:	/bin/mail
 Source0:	http://download.mayanet.pl/ups_monitor/upsmonitor.pl
 # http://download.mayanet.pl/ups_monitor/readme.txt
 Source1:	%{name}-readme.txt
