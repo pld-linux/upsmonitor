@@ -8,9 +8,6 @@
 # Source function library.
 . /etc/rc.d/init.d/functions
 
-# Source networking configuration.
-. /etc/sysconfig/network
-
 # Demon specified configuration.
 [ -f /etc/sysconfig/upsmonitor ] && . /etc/sysconfig/upsmonitor
 
