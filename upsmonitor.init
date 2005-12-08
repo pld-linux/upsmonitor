@@ -1,5 +1,5 @@
 #!/bin/sh
-# 
+#
 # chkconfig:	12345 98 92
 # description:	Uninterruptable Power Supply Monitoring Script upsmonitor.pl
 #
@@ -32,7 +32,7 @@ case "$1" in
 		rm -f /var/lock/subsys/upsmonitor >/dev/null 2>&1
 	else
 		msg_not_running upsmonitor
-	fi	
+	fi
 	;;
   status)
 	status upsmonitor
