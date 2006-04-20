@@ -4,16 +4,18 @@ Name:		upsmonitor
 Version:	1.0.11
 Release:	1
 License:	Free
-Vendor:		Artur Miarecki (MAYANET) artur.miarecki@mayanet.pl
 Group:		Daemons
-Requires:	/bin/mail
 Source0:	http://download.mayanet.pl/ups_monitor/arch/%{version}/%{name}.pl
 Source1:	http://download.mayanet.pl/ups_monitor/arch/%{version}/%{name}.conf
 Source2:	http://download.mayanet.pl/ups_monitor/historia.txt
-Source10:	%{name}-readme.txt
 # http://download.mayanet.pl/ups_monitor/readme.txt
+Source10:	%{name}-readme.txt
 Source11:	%{name}.init
 URL:		http://download.mayanet.pl/ups_monitor/
+BuildRequires:	rpmbuild(macros) >= 1.268
+Requires(post,preun):	/sbin/chkconfig
+Requires:	/bin/mail
+Requires:	rc-scripts
 ExclusiveArch:	%{ix86}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -42,10 +44,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 /sbin/chkconfig --add upsmonitor
-if [ -f /var/lock/subsys/upsmonitor ]; then
-	/etc/rc.d/init.d/upsmonitor restart 1>&2
-else
-	echo "Run \"/etc/rc.d/init.d/upsmoinitor start\" to start ups_monitor."
+%service upsmonitor restart "ups_monitor"
+
+%preun
+if [ "$1" = "0" ]; then
+	%service upsmonitor stop
+	/sbin/chkconfig --del upsmonitor
 fi
 
 %files
