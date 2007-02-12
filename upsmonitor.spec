@@ -1,5 +1,5 @@
 Summary:	Allows to monitor UPS Active Power
-Summary(pl.UTF-8):   Narzędzia do monitorowania UPS-ów Active Power
+Summary(pl.UTF-8):	Narzędzia do monitorowania UPS-ów Active Power
 Name:		upsmonitor
 Version:	1.0.11
 Release:	1
