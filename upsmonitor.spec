@@ -1,5 +1,5 @@
 Summary:	Allows to monitor UPS Active Power
-Summary(pl):	Narzêdzia do monitorowania UPS-ów Active Power
+Summary(pl.UTF-8):   NarzÄ™dzia do monitorowania UPS-Ã³w Active Power
 Name:		upsmonitor
 Version:	1.0.11
 Release:	1
@@ -22,9 +22,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Allows to monitor UPS Active Power and safely shutdown system.
 
-%description -l pl
-Narzêdzia pozwalaj±ce na monitorowanie i bezpieczne zamkniêcie systemu
-operacyjnego komputera z do³±czonym zasilaczem UPS Active Power.
+%description -l pl.UTF-8
+NarzÄ™dzia pozwalajÄ…ce na monitorowanie i bezpieczne zamkniÄ™cie systemu
+operacyjnego komputera z doÅ‚Ä…czonym zasilaczem UPS Active Power.
 
 %prep
 %setup -q -c -T
